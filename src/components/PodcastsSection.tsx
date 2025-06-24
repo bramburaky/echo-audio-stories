@@ -19,10 +19,21 @@ interface Podcast {
 const mockPodcasts: Podcast[] = [
   {
     id: 1,
+    title: "Test Podcast Episode",
+    description: "This is a test podcast episode to verify the audio functionality works correctly. It includes a sample audio file and demonstrates the player interface.",
+    coverImage: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=300&h=300&fit=crop",
+    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    duration: "4:12",
+    category: "Test",
+    tags: ["test", "audio", "demo"],
+    date: "2024-06-24"
+  },
+  {
+    id: 2,
     title: "The Future of Minimalist Design",
     description: "A deep dive into how minimalism is shaping the future of digital experiences with renowned designer Sarah Chen. We explore the psychology behind clean interfaces and the impact on user behavior.",
     coverImage: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=300&fit=crop",
-    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
     duration: "32:15",
     category: "Design",
     tags: ["design", "minimalism", "future"],

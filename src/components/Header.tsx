@@ -1,9 +1,15 @@
 
 import { useState } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
-const Header = () => {
+interface HeaderProps {
+  searchQuery?: string;
+  setSearchQuery?: (query: string) => void;
+}
+
+const Header = ({ searchQuery = "", setSearchQuery }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -20,6 +26,19 @@ const Header = () => {
         </div>
         
         <div className="flex items-center space-x-4">
+          {/* Search Bar */}
+          {setSearchQuery && (
+            <div className="relative hidden md:block">
+              <Search className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+              <Input
+                placeholder="Search all content..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 w-64 border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 focus:border-gray-500 dark:focus:border-gray-400"
+              />
+            </div>
+          )}
+
           <Button
             variant="ghost"
             size="icon"
@@ -42,6 +61,18 @@ const Header = () => {
 
       {isMenuOpen && (
         <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 px-6 py-4">
+          {/* Mobile Search Bar */}
+          {setSearchQuery && (
+            <div className="relative mb-4">
+              <Search className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
+              <Input
+                placeholder="Search all content..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 focus:border-gray-500 dark:focus:border-gray-400"
+              />
+            </div>
+          )}
           <div className="text-center">
             <p className="text-gray-600 dark:text-gray-400">Navigate using the cards below</p>
           </div>
