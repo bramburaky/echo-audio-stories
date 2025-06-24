@@ -20,9 +20,9 @@ const mockPodcasts: Podcast[] = [
   {
     id: 1,
     title: "The Future of Minimalist Design",
-    description: "A deep dive into how minimalism is shaping the future of digital experiences with renowned designer Sarah Chen.",
+    description: "A deep dive into how minimalism is shaping the future of digital experiences with renowned designer Sarah Chen. We explore the psychology behind clean interfaces and the impact on user behavior.",
     coverImage: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=300&fit=crop",
-    audioUrl: "#", // In a real app, this would be an actual audio URL
+    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
     duration: "32:15",
     category: "Design",
     tags: ["design", "minimalism", "future"],
@@ -31,9 +31,9 @@ const mockPodcasts: Podcast[] = [
   {
     id: 2,
     title: "Conversations on Creativity",
-    description: "Exploring the creative process with local artists and how they find inspiration in everyday moments.",
+    description: "Exploring the creative process with local artists and how they find inspiration in everyday moments. From morning routines to creative blocks, we cover it all.",
     coverImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=300&fit=crop",
-    audioUrl: "#",
+    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
     duration: "28:43",
     category: "Art",
     tags: ["creativity", "art", "inspiration"],
@@ -42,9 +42,9 @@ const mockPodcasts: Podcast[] = [
   {
     id: 3,
     title: "Mindful Technology",
-    description: "How to maintain balance in our digital lives and use technology more intentionally.",
+    description: "How to maintain balance in our digital lives and use technology more intentionally. Practical tips for digital wellness and creating healthy boundaries.",
     coverImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=300&fit=crop",
-    audioUrl: "#",
+    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
     duration: "41:22",
     category: "Technology",
     tags: ["technology", "mindfulness", "balance"],
@@ -53,13 +53,24 @@ const mockPodcasts: Podcast[] = [
   {
     id: 4,
     title: "The Philosophy of Simple Living",
-    description: "Exploring what it means to live simply in a complex world with philosopher Dr. Marcus Webb.",
+    description: "Exploring what it means to live simply in a complex world with philosopher Dr. Marcus Webb. From minimalist principles to life philosophy.",
     coverImage: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=300&h=300&fit=crop",
-    audioUrl: "#",
+    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
     duration: "45:18",
     category: "Philosophy",
     tags: ["philosophy", "simplicity", "lifestyle"],
     date: "2024-06-05"
+  },
+  {
+    id: 5,
+    title: "Digital Detox Strategies",
+    description: "Practical approaches to reducing screen time and increasing real-world engagement. Tips from digital wellness experts and success stories.",
+    coverImage: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=300&h=300&fit=crop",
+    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+    duration: "36:42",
+    category: "Wellness",
+    tags: ["wellness", "digital", "lifestyle"],
+    date: "2024-05-30"
   }
 ];
 
@@ -129,17 +140,17 @@ const PodcastsSection = ({ searchQuery }: PodcastsSectionProps) => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12">
+    <div className="max-w-6xl mx-auto px-6 py-12 dark:bg-gray-900 min-h-screen">
       <div className="mb-12">
-        <h1 className="text-4xl font-light text-gray-900 mb-4">Podcasts</h1>
-        <p className="text-lg text-gray-600">Audio stories and conversations</p>
+        <h1 className="text-4xl font-light text-gray-900 dark:text-gray-100 mb-4">Podcasts</h1>
+        <p className="text-lg text-gray-600 dark:text-gray-400">Audio stories and conversations</p>
       </div>
 
       {/* Filters */}
       <div className="mb-8 space-y-4">
         {/* Categories */}
         <div>
-          <h3 className="text-sm font-medium text-gray-700 mb-2">Categories</h3>
+          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Categories</h3>
           <div className="flex flex-wrap gap-2">
             {allCategories.map(category => (
               <button
@@ -147,8 +158,8 @@ const PodcastsSection = ({ searchQuery }: PodcastsSectionProps) => {
                 onClick={() => toggleCategory(category)}
                 className={`px-3 py-1 rounded-full text-sm transition-colors ${
                   selectedCategories.includes(category)
-                    ? 'bg-purple-100 text-purple-800 border border-purple-200'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
+                    ? 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 border border-purple-200 dark:border-purple-700'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
                 }`}
               >
                 {category}
@@ -159,7 +170,7 @@ const PodcastsSection = ({ searchQuery }: PodcastsSectionProps) => {
 
         {/* Tags */}
         <div>
-          <h3 className="text-sm font-medium text-gray-700 mb-2">Tags</h3>
+          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Tags</h3>
           <div className="flex flex-wrap gap-2">
             {allTags.map(tag => (
               <button
@@ -167,8 +178,8 @@ const PodcastsSection = ({ searchQuery }: PodcastsSectionProps) => {
                 onClick={() => toggleTag(tag)}
                 className={`px-3 py-1 rounded-full text-sm transition-colors ${
                   selectedTags.includes(tag)
-                    ? 'bg-purple-100 text-purple-800 border border-purple-200'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
+                    ? 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 border border-purple-200 dark:border-purple-700'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700'
                 }`}
               >
                 {tag}
@@ -181,7 +192,7 @@ const PodcastsSection = ({ searchQuery }: PodcastsSectionProps) => {
       {/* Podcasts List */}
       <div className="space-y-6">
         {filteredPodcasts.map(podcast => (
-          <div key={podcast.id} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
+          <div key={podcast.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-md transition-shadow">
             <div className="flex items-start space-x-4">
               {/* Cover Image */}
               <div className="flex-shrink-0">
@@ -196,24 +207,24 @@ const PodcastsSection = ({ searchQuery }: PodcastsSectionProps) => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between mb-2">
                   <div>
-                    <span className="inline-block px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded mb-2">
+                    <span className="inline-block px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded mb-2">
                       {podcast.category}
                     </span>
-                    <h3 className="text-xl font-medium text-gray-900 mb-2">{podcast.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                    <h3 className="text-xl font-medium text-gray-900 dark:text-gray-100 mb-2">{podcast.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
                       {podcast.description}
                     </p>
                   </div>
                 </div>
 
                 {/* Audio Player */}
-                <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-4">
                   <div className="flex items-center space-x-4 mb-3">
                     <Button
                       size="sm"
                       variant="outline"
                       onClick={() => togglePlayPause(podcast.id)}
-                      className="flex-shrink-0"
+                      className="flex-shrink-0 dark:border-gray-600 dark:text-gray-300"
                     >
                       {currentlyPlaying === podcast.id && isPlaying ? (
                         <Pause className="w-4 h-4" />
@@ -231,7 +242,7 @@ const PodcastsSection = ({ searchQuery }: PodcastsSectionProps) => {
                       />
                     </div>
                     
-                    <span className="text-sm text-gray-500 flex-shrink-0">
+                    <span className="text-sm text-gray-500 dark:text-gray-400 flex-shrink-0">
                       {currentlyPlaying === podcast.id ? formatTime(currentTime) : "0:00"} / {podcast.duration}
                     </span>
                   </div>
@@ -239,14 +250,14 @@ const PodcastsSection = ({ searchQuery }: PodcastsSectionProps) => {
 
                 {/* Meta Information */}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-1 text-sm text-gray-500">
+                  <div className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400">
                     <Calendar className="w-4 h-4" />
                     <span>{new Date(podcast.date).toLocaleDateString()}</span>
                   </div>
                   
                   <div className="flex items-center space-x-2">
                     {podcast.tags.map(tag => (
-                      <span key={tag} className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
+                      <span key={tag} className="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300 text-xs rounded">
                         {tag}
                       </span>
                     ))}
@@ -260,7 +271,7 @@ const PodcastsSection = ({ searchQuery }: PodcastsSectionProps) => {
       
       {filteredPodcasts.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-500">No podcasts found matching your criteria.</p>
+          <p className="text-gray-500 dark:text-gray-400">No podcasts found matching your criteria.</p>
         </div>
       )}
     </div>
